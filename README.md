@@ -1,8 +1,10 @@
 # Orbit - Realtime Chat Application
 
-Orbit is a modern, full-stack realtime chat application built with Next.js, Node.js, Express, MongoDB, and Socket.io. It features a beautiful, responsive UI, secure authentication, and real-time messaging.
+Orbit is a microservices-based, scalable, full-stack realtime chat application built with Next.js, Node.js, Express, MongoDB, Socket.io, RabbitMQ, and Redis. It features a beautiful, responsive UI, secure authentication, and real-time messaging.
 
 ## Features
+- Microservices architecture for scalability and reliability
+- Modern glassmorphism UI with gradients and animations
 - Realtime messaging with Socket.io
 - Secure authentication with OTP verification
 - Profile management with avatar support
@@ -31,12 +33,51 @@ Orbit is a modern, full-stack realtime chat application built with Next.js, Node
 - **Realtime:** Socket.io
 - **Authentication:** OTP via Email
 - **File Uploads:** Multer, Cloudinary
+- **Microservices Communication:** RabbitMQ
+- **Caching & Pub/Sub:** Redis
+
+## Tool & Component Overview
+
+### Frontend Tools & Components
+- **Next.js**: React framework for server-side rendering, routing, and fast builds.
+- **React**: UI library for building interactive user interfaces.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development and custom styling.
+- **AppContext**: Global state management for user, chat, and authentication data.
+- **SocketContext**: Manages real-time socket connections for chat updates.
+- **ChatSideBar**: Displays user list, chat list, online status, and allows starting new chats.
+- **ChatHeader**: Shows selected user's info, online status, and chat actions.
+- **ChatMessages**: Renders chat messages, supports animations, and message status.
+- **MessageInput**: Input field for sending messages, with typing indicator and file upload.
+- **VerifyOTP**: Handles OTP verification for secure login.
+- **Loading**: Animated loading spinner for async operations.
+
+### Backend Tools & Services
+- **Node.js**: JavaScript runtime for building scalable server-side applications.
+- **Express**: Web framework for routing, middleware, and REST APIs.
+- **MongoDB & Mongoose**: NoSQL database and ODM for storing users, chats, and messages.
+- **Socket.io**: Enables real-time, bidirectional communication for instant messaging.
+- **Multer**: Middleware for handling file uploads (profile pictures, media).
+- **Cloudinary**: Cloud service for storing and serving uploaded images.
+- **JWT (JSON Web Token)**: Used for secure authentication and session management.
+- **Nodemailer**: Sends OTP emails for user verification.
+- **RabbitMQ**: Message broker for microservices communication (e.g., mail service, notifications).
+- **Redis**: In-memory data store for caching, pub/sub, and fast data access.
+
+### Key Functions & Endpoints
+- **User Authentication**: Register, login, OTP verification, JWT token management.
+- **Profile Management**: Update name, upload/remove avatar, view profile.
+- **Chat Management**: Create chat, send/receive messages, mark as read/unread, star messages.
+- **Media & Files**: Upload, view, and download media/files in chat.
+- **Online Status**: Real-time user presence indicator using Socket.io.
+- **Microservices**: Decoupled services for user, chat, mail, notifications, scaling via RabbitMQ and Redis.
 
 ## Getting Started
 
 ### Prerequisites
 - Node.js & npm
 - MongoDB
+- RabbitMQ
+- Redis
 
 ### Installation
 1. Clone the repository:
@@ -51,7 +92,7 @@ Orbit is a modern, full-stack realtime chat application built with Next.js, Node
    cd ../../frontend/my-app
    npm install
    ```
-3. Set up environment variables for backend (MongoDB URI, Cloudinary, etc.)
+3. Set up environment variables for backend (MongoDB URI, Cloudinary, RabbitMQ, Redis, etc.)
 4. Start backend and frontend servers:
    ```bash
    # In backend/user
@@ -85,4 +126,3 @@ Try the app locally or deploy to Vercel/Heroku for a live demo.
 
 ## Contact
 For any queries, reach out to [hardik2004s@gmail.com](mailto:hardik2004s@gmail.com)
-
